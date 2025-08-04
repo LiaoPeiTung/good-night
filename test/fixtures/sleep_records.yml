@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  sleep_at: 2025-08-04 16:57:30
+  wake_up_at: 2025-08-04 16:57:30
+
+two:
+  user: two
+  sleep_at: 2025-08-04 16:57:30
+  wake_up_at: 2025-08-04 16:57:30
