@@ -33,7 +33,6 @@ Click to start development in browser:
 
 ## Running Tests
 
-- bundle exec rspec spec/requests/follows_spec.rb
-- bundle exec rspec spec/requests/sleep_records_spec.rb
+- bundle exec rspec
 
 ---
