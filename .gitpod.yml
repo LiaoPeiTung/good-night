@@ -1,8 +1,16 @@
+image:
+  file: .gitpod.Dockerfile
+
 tasks:
-  - init: bundle install
-  - command: rails db:create db:migrate
-  - command: rails server -b 0.0.0.0
+  - name: Setup database and run migrations
+    init: |
+      docker-compose up -d
+      sleep 5
+      bundle install
+      rails db:create db:migrate
+    command: echo "Ready!"
 
 ports:
   - port: 3000
     onOpen: open-preview
+    visibility: public
