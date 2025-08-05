@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :sleep_records
+  has_many :sleep_records, dependent: :destroy
 
   has_many :follows, foreign_key: :follower_id
   has_many :followees, through: :follows
