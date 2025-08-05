@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Good Night API
 
-Things you may want to cover:
+A simple RESTful Rails API to help users clock in/out sleep records, follow/unfollow friends, and view friends’ weekly sleep durations.
 
-* Ruby version
+## Tech Stack
 
-* System dependencies
+- Ruby on Rails 7
+- PostgreSQL
+- RSpec (for testing)
+- Gitpod (for cloud development)
 
-* Configuration
+---
 
-* Database creation
+## Getting Started
 
-* Database initialization
+Click to start development in browser:
+[Open in Gitpod](https://gitpod.io/#https://github.com/LiaoPeiTung/good-night)
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+## API Endpoints
 
-* Deployment instructions
+| Action                 | Method   | Endpoint                                | Description                                                             |
+| ---------------------- | -------- | --------------------------------------- | ----------------------------------------------------------------------- |
+| Clock In               | `POST`   | `/clock_in`                             | Record `sleep_at` time                                                  |
+| Clock Out              | `PATCH`  | `/clock_out`                            | Update latest record with `wake_up_at`                                  |
+| Follow User            | `POST`   | `/users/:user_id/follow/:followee_id`   | Follow another user                                                     |
+| Unfollow User          | `DELETE` | `/users/:user_id/unfollow/:followee_id` | Unfollow another user                                                   |
+| Friends’ Sleep Records | `GET`    | `/users/:user_id/friends_sleep_records` | View sleep records of followed users in past 7 days, sorted by duration |
 
-* ...
+
+## Running Tests
+
+bundle exec rspec spec/requests/follows_spec.rb
+bundle exec rspec spec/requests/sleep_records_spec.rb
+
+---
