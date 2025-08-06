@@ -16,6 +16,24 @@ RSpec.describe "SleepRecords API", type: :request do
       end
     end
 
+    context "when previous record is completed" do
+      before do
+        user.sleep_records.create!(sleep_at: 2.days.ago, wake_up_at: 1.day.ago)
+      end
+
+      it "creates a new sleep record and returns all records" do
+        post '/clock_in', params: { user_id: user.id }
+        expect(response).to have_http_status(:success)
+
+        json = JSON.parse(response.body)
+        expect(json).to be_an(Array)
+        expect(json.first['sleep_at']).not_to be_nil
+        expect(json.first['wake_up_at']).not_to be_nil
+        expect(json.last['sleep_at']).not_to be_nil
+        expect(json.last['wake_up_at']).to be_nil
+      end
+    end 
+
     context "when user already clocked in without clocking out" do
       before do
         user.sleep_records.create!(sleep_at: 1.hour.ago)
